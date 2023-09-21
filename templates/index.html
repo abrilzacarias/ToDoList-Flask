@@ -2,19 +2,26 @@
     <head>
         <title>To-Do</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/toDoList.css') }}" />
+        <script src="{{ url_for('static', filename='js/toDoList.js') }}"></script>
     </head>
     <body>
         <div id="container">
             <h3 id="header">To Do List</h3>
-            <form id="todo-form">
-                <input type="text" placeholder="Nombre Actividad" />
-                <button class="boton-personalizado">Añadir</button>
+            <form id="todo-form" method="POST">
+                <input type="text" name="tarea" id="inputTarea" placeholder="Nombre Actividad" />
+                <button class="botonAnadir">Añadir</button>
             </form>
+            
             <div class="task-list" id="all">
                 <h3>All</h3>
+                <ul id="actividadesTodas">
+                </ul>
             </div>
             <div class="task-list" id="active">
                 <h3>Active</h3>
+                <ul id="actividadesActivas">
+                    
+                </ul>
             </div>
             <div class="task-list" id="completed">
                 <h3>Completed</h3>
