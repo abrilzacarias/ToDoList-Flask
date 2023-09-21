@@ -1,23 +1,10 @@
-from views.views import views
-from flask import Flask
+from flask import Flask, render_template
 
-from extensions import db
-# flask instance creation
-app = Flask(__name__)
-app.register_blueprint(views)
-app.app_context().push()
+app = Flask(__name__, template_folder='templates')
 
-app.config['SECRET_KEY'] = ''
-app.config['SQLALCHEMY_DATABASE_URI'] = ''
-app.config['UPLOAD_FOLDER'] = 'uploads/'
-app.config['ALLOWED_EXTENSIONS'] = {
-    'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif', 'xml'}
+@app.route('/')
+def toDoList():
+    return render_template('index.html')
 
-db.init_app(app)
-
-
-with app.app_context():
-    db.create_all()
-
-if __name__ == '__app__':
+if __name__ == '__main__':
     app.run(debug=True)
