@@ -3,22 +3,21 @@
         <title>To-Do</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/toDoList.css') }}" />
     </head>
-    <body class="well">
+    <body>
         <div id="container">
-            <h3>Add a task</h3>
-                <form id="todo-form">
-                    <input type="text" placeholder="Title" />
-                </form>
-            <div id="header"> To Do List </div>
-            <div class="task-list task-container" id="all">
+            <h3 id="header">To Do List</h3>
+            <form id="todo-form">
+                <input type="text" placeholder="Nombre Actividad" />
+                <button class="boton-personalizado">Añadir</button>
+            </form>
+            <div class="task-list" id="all">
                 <h3>All</h3>
             </div>
-            <div class="task-list task-container" id="inProgress">
+            <div class="task-list" id="active">
                 <h3>Active</h3>
             </div>
-            <div class="task-list task-container" id="completed">
+            <div class="task-list" id="completed">
                 <h3>Completed</h3>
-            </div>
             </div>
         </div>
     </body>
