@@ -2,6 +2,7 @@
     <head>
         <title>To-Do</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/toDoList.css') }}" />
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     </head>
     <body>
         <div id="container">
@@ -10,15 +11,29 @@
                 <input type="text" placeholder="Nombre Actividad" />
                 <button class="boton-personalizado">Añadir</button>
             </form>
-            <div class="task-list" id="all">
-                <h3>All</h3>
-            </div>
-            <div class="task-list" id="active">
-                <h3>Active</h3>
-            </div>
-            <div class="task-list" id="completed">
-                <h3>Completed</h3>
-            </div>
+        <nav class="nav">
+            <ul>
+                <li><a href="#seccionAll"> All</a></li>
+                <li><a href="#seccionActive"> Active</a></li>
+                <li><a href="#seccionCompleted"> Completed</a></li>
+            </ul>
+        </nav>
+
+        <section id="seccionAll">
+            <h1>SECCION ALL</h1>
+             <!-- Contenedor para tareas en la sección All -->
+        </section>
+        
+        <section id="seccionActive">
+            <h1>SECCION ACTIVE</h1>
+             <!-- Contenedor para tareas en la sección Active -->
+        </section>
+        
+        <section id="seccionCompleted">
+            <h1>SECCION COMPLETED</h1>
+             <!-- Contenedor para tareas en la sección Completed -->
+        </section>
+     
         </div>
     </body>
 </html>
