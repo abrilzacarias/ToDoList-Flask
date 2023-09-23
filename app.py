@@ -7,14 +7,21 @@ listaActividades = ListaActividades()
 @app.route('/')
 def toDoList():
     actividades = listaActividades.getActividades()
+    # Inicializa listas vacías para actividades activas e inactivas
+    actividadesActivas = []
+    actividadesInactivas = []
+    # Itera sobre las actividades y clasifícalas en las listas correspondientes
     for actividad in actividades:
-        print(f"Nombre: {actividad.getNombre()}, Estado: {actividad.getEstado()}")
-    return render_template('index.html', actividades=actividades)
+        if actividad.getEstado() == 'Active':
+            actividadesActivas.append(actividad)
+        elif actividad.getEstado() == 'Inactive':
+            actividadesInactivas.append(actividad)
+    return render_template('index.html', actividades=actividades, actividadesActivas=actividadesActivas, actividadesInactivas=actividadesInactivas)
 
 @app.route('/agregar', methods=['POST'])
 def toDoListAgregar():
     tarea = request.form.get('tarea')  # Obtiene la tarea del formulario
-    estado = "active"
+    estado = "Active"
     nombre, estadoAct = listaActividades.crearActividad(tarea, estado)
     print(f"Actividad '{tarea}' creada con éxito.")
 
@@ -32,12 +39,16 @@ def editarTarea():
 @app.route('/eliminar', methods=['POST'])
 def eliminarTarea():
     tareaEliminar = request.form['tareaEliminar']
-
-    print(f"Intentando eliminar la tarea: {tareaEliminar}")
-
     listaActividades.eliminarActividad(tareaEliminar)
-
     return redirect(url_for("toDoList"))
+
+@app.route('/marcarCompletada', methods=['POST'])
+def marcarCompletada():
+    tarea = request.form['tarea']
+    # Encuentra la tarea por su nombre y cambia su estado a "Inactive"
+    listaActividades.chequearActividad(tarea)
+    return redirect(url_for("toDoList"))
+
 
 if __name__ == '__main__':
     app.run(debug=True)

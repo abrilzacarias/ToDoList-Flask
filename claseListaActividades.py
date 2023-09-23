@@ -26,9 +26,13 @@ class ListaActividades:
                 self.actividades.remove(actividad)
         return actividades  
 
-    def chequearActividad(self):
-        pass
-
+    def chequearActividad(self, nombreTarea):
+        actividades = self.getActividades()
+        for actividad in actividades:
+            if actividad.getNombre() == nombreTarea:
+                actividad.setEstado("Inactive")
+        return actividades 
+    
     def clasificarActividad(self):
         pass
 

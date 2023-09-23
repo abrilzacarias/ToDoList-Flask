@@ -3,48 +3,115 @@
         <title>To-Do</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/toDoList.css') }}" />
         <script src="{{ url_for('static', filename='js/toDoList.js') }}"></script>
+        <script src="https://kit.fontawesome.com/05c2be17c9.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="container">
             <h3 id="header">To Do List</h3>
             <form action="/agregar" id="todo-form" method="POST">
                 <input type="text" name="tarea" id="inputTarea" placeholder="agregar Actividad" />
-                <button class="botonAnadir" type="submit">Añadir</button>
+                <button class="botonAnadir" type="submit">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
             </form>
-            
-            <div class="task-list" id="all">
-                <h3>All</h3>
-                <ul id="actividadesTodas">
-                    {% for actividad in actividades %}
-                    <li>
-                        <input type="checkbox" name="tarea1" id="tarea1">
-                        <label name="tareaEditar" id="{{ actividad.getNombre() }}">{{ actividad.getNombre() }}</label>
-                        <button class="boton-editar" type="button" data-nombre="{{ actividad.getNombre() }}">Editar</button>
 
-                        <form action="/editar" method="POST"> 
-                            <input type="hidden" name="tareaEditar" value="{{ actividad.getNombre() }}">
-                            <input type="text" name="nuevoNombre" id="inputEditar" placeholder="editar Actividad" style="display: none;" />
-                            <button class="boton guardar" type="submit" style="display: none;">Guardar</button>
-                        </form>
-                        <button class="boton cancelar" type="button" style="display: none;">Cancelar</button>
+        <nav class="nav">
+            <ul>
+                <li><a href="#seccionAll"> All</a></li>
+                <li><a href="#seccionActive"> Active</a></li>
+                <li><a href="#seccionCompleted"> Completed</a></li>
+            </ul>
+        </nav>
 
-                        <form action="/eliminar" method="POST" class="eliminar-form">
-                            <input type="hidden" name="tareaEliminar" value="{{ actividad.getNombre() }}">
-                            <button class="boton eliminar" type="submit">Eliminar</button>
-                        </form>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="task-list" id="active">
-                <h3>Active</h3>
-                <ul id="actividadesActivas">
+        <section id="seccionAll" class="seccion">
+            <h1>SECCION ALL</h1>
+            <ul id="actividadesTodas">
+                {% for actividad in actividades %}
+                <li>
+                    <form action="/marcarCompletada" method="POST">
+                        <label>
+                            <input type="checkbox" name="tarea" value="{{ actividad.getNombre() }}" data-estado="{{ actividad.getEstado() }}" onchange="this.form.submit()" class="checkbox-tarea" {% if actividad.getEstado() == 'Inactive' %}checked{% endif %}>
+                        </label>
+                    </form>
+                    <label name="tareaEditar" id="{{ actividad.getNombre() }}">{{ actividad.getNombre() }}</label>
+                    <button class="boton-editar" type="button" data-nombre="{{ actividad.getNombre() }}"><i class="fa-solid fa-pencil"></i></button>
+
+                    <form action="/editar" method="POST"> 
+                        <input type="hidden" name="tareaEditar" value="{{ actividad.getNombre() }}">
+                        <input type="text" name="nuevoNombre" id="inputEditar" placeholder="editar Actividad" style="display: none;" />
+                        <button class="boton guardar" type="submit" style="display: none;">Guardar</button>
+                    </form>
+                    <button class="boton cancelar" type="button" style="display: none;">Cancelar</button>
+
+                    <form action="/eliminar" method="POST" class="eliminar-form">
+                        <input type="hidden" name="tareaEliminar" value="{{ actividad.getNombre() }}">
+                        <button class="boton eliminar" type="submit"><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        
+        <section id="seccionActive" class="seccion">
+            <h1>SECCION ACTIVE</h1>
+            <ul id="actividadesActivas">
+                {% for actividad in actividadesActivas %}
+                <li>
+                    <form action="/marcarCompletada" method="POST">
+                        <label>
+                            <input type="checkbox" name="tarea" value="{{ actividad.getNombre() }}" data-estado="{{ actividad.getEstado() }}" class="checkbox-tarea" onchange="this.form.submit()">
+                        </label>
+                    </form>
                     
-                </ul>
-            </div>
-            <div class="task-list" id="completed">
-                <h3>Completed</h3>
-            </div>
+                    <label name="tareaEditar" id="{{ actividad.getNombre() }}">{{ actividad.getNombre() }}</label>
+                    <button class="boton-editar" type="button" data-nombre="{{ actividad.getNombre() }}"><i class="fa-solid fa-pencil"></i></button>
+
+                    <form action="/editar" method="POST"> 
+                        <input type="hidden" name="tareaEditar" value="{{ actividad.getNombre() }}">
+                        <input type="text" name="nuevoNombre" id="inputEditar" placeholder="editar Actividad" style="display: none;" />
+                        <button class="boton guardar" type="submit" style="display: none;">Guardar</button>
+                    </form>
+                    <button class="boton cancelar" type="button" style="display: none;">Cancelar</button>
+
+                    <form action="/eliminar" method="POST" class="eliminar-form">
+                        <input type="hidden" name="tareaEliminar" value="{{ actividad.getNombre() }}">
+                        <button class="boton eliminar" type="submit"><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+        
+        <section id="seccionCompleted" class="seccion">
+            <h1>SECCION COMPLETED</h1>
+            <ul id="actividadesInactivas">
+                {% for actividad in actividadesInactivas %}
+                <li>
+                    <form action="/marcarCompletada" method="POST">
+                        <label>
+                            <input type="checkbox" name="tarea" value="{{ actividad.getNombre() }}" data-estado="{{ actividad.getEstado() }}" class="checkbox-tarea" checked>
+                        </label>
+                    </form>
+                    
+                    <label name="tareaEditar" id="{{ actividad.getNombre() }}">{{ actividad.getNombre() }}</label>
+                    <button class="boton-editar" type="button" data-nombre="{{ actividad.getNombre() }}"><i class="fa-solid fa-pencil"></i></button>
+
+                    <form action="/editar" method="POST"> 
+                        <input type="hidden" name="tareaEditar" value="{{ actividad.getNombre() }}">
+                        <input type="text" name="nuevoNombre" id="inputEditar" placeholder="editar Actividad" style="display: none;" />
+                        <button class="boton guardar" type="submit" style="display: none;">Guardar</button>
+                    </form>
+                    <button class="boton cancelar" type="button" style="display: none;">Cancelar</button>
+
+                    <form action="/eliminar" method="POST" class="eliminar-form">
+                        <input type="hidden" name="tareaEliminar" value="{{ actividad.getNombre() }}">
+                        <button class="boton eliminar" type="submit"><i class="fa-solid fa-trash"></i></button>
+                    </form>
+                </li>
+                {% endfor %}
+            </ul>
+        </section>
+     
         </div>
     </body>
 </html>

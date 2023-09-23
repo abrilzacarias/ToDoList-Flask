@@ -1,78 +1,117 @@
+
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+/* Estilos generales */
 body {
-    background-color: #374a5d;
-    border: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    margin: 0;
+    padding: 0;
 }
 
-#container{
+#container {
     margin: 0 auto;
-    width: 1060px;
-    min-height: 100%;
-    background-color: transparent;
-    border: 0;
-    
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#header{
-    font-size: 30px;
+h3#header {
+    font-size: 24px;
     text-align: center;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Formulario y botones */
+form#todo-form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+form#todo-form input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+form#todo-form button.boton-personalizado {
+    background-color: #007bff;
     color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer; /* hace al curso una manito*/
+    font-size: 16px;
 }
 
-.task-list{
-    width: 250px;
-    float: left;
-    margin: 0 5px;
-    background-color: #e3e3e3;
-    min-height: 240px;
-    border-radius: 10px;
-    padding-bottom: 15px;
+/* Navegación */
+nav.nav ul {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
 }
 
-.task-list input{
-    height: 30px;
+nav.nav ul li {
+    margin-right: 50px; /* margen derecho de los elementos de la lista*/
 }
 
-.todo-task{
-    border-radius: 5px;
-    background-color: #fff;
-    width: 230px;
-    margin: 5px;
-    padding: 5px;
+nav.nav ul li a {
+    text-decoration: none; /* elimina el subrayado*/
+    color: #333;
+    font-weight: bold;
 }
 
-
-h3{
-    text-align: center;
+/* Secciones */
+section {
+    display: none; /*oculta el contenido html de todas las secciones*/
+    padding: 20px;
 }
 
-#delete-div{
-    display: none;
-    background-color: #fff;
-    border: 3px dotted #000;
-    margin: 10px;
-    height: 75px;
-    line-height: 75px;
-    text-align: center;
+section h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
 }
-/* Estilo para la lista sin puntos de lista */
+
 ul {
-    list-style: none;
-    padding: 0; /* Elimina el espacio de relleno por defecto */
+    list-style: none; /*elimina las vinetas de la lista*/
+    padding: 0;
 }
 
-/* Estilo para los elementos de la lista */
+/* Estilos específicos para las secciones */
+.seccion {
+    background-color: #f2f2f2;
+
+}
+
+button {
+    /* Estilos comunes para todos los botones */
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s
+}
+button:hover {
+    background-color: #2980b9; /* Color de fondo al pasar el mouse */
+    color: #ffffff; /* Color de texto al pasar el mouse */
+}
 li {
-    margin-bottom: 10px; /* Espacio entre elementos de la lista */
-    display: flex; /* Utiliza un diseño flexible para alinear elementos */
-    align-items: left; /* Centra verticalmente los elementos */
+    display: flex;
+    flex-wrap: wrap; /* Para que los elementos pasen a la siguiente fila si no caben en una sola línea */
+    gap: 5px;
+    align-items: center;
 }
 
-/* Estilo para los elementos de la lista con casillas de verificación */
-li input[type="checkbox"] {
-    margin-right: 10px; /* Espacio entre la casilla de verificación y el texto */
-}
-
-.seccionEditar {
-    display: "none";
-}
