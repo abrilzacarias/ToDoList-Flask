@@ -1,32 +1,31 @@
-
-console.log("hola")
 document.addEventListener("DOMContentLoaded", function () {
-    const todoForm = document.getElementById("todo-form");
-    const inputTarea = document.getElementById("inputTarea");
-    const responseElement = document.getElementById("response");
+    const botonesEditar = document.querySelectorAll(".boton-editar");
 
-    todoForm.addEventListener("submit", function (event) {
-        event.preventDefault(); // Evita el envío automático del formulario
+    botonesEditar.forEach(function (botonEditar) {
+        botonEditar.addEventListener("click", function () {
+            const listItem = botonEditar.closest("li");
+            const nombreActividad = listItem.querySelector("label[name='tareaEditar']");
+            const inputEditar = listItem.querySelector("input#inputEditar");
+            const botonGuardar = listItem.querySelector(".boton.guardar");
+            const botonCancelar = listItem.querySelector(".boton.cancelar");
+            
+            nombreActividad.style.display = "none";
+            inputEditar.style.display = "block";
+            inputEditar.value = nombreActividad.textContent; // Establecer el valor del input como el nombre actual
+            botonEditar.style.display = "none";
+            botonGuardar.style.display = "inline-block";
+            botonCancelar.style.display = "inline-block";
 
-        const taskText = inputTarea.value;
-
-        // Envía la tarea al servidor Flask como una cadena usando AJAX
-        fetch("/", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
-            },
-            body: `task=${encodeURIComponent(taskText)}`
-        })
-        .then(response => response.text())
-        .then(data => {
-            console.error("exito:", data);
-        })
-        .catch(error => {
-            console.error("Error:", error);
+            // Agrega aquí el código para el botón "Cancelar"
+            botonCancelar.addEventListener("click", function () {
+                // Tu lógica para el botón "Cancelar" aquí
+                nombreActividad.style.display = "block";
+                inputEditar.style.display = "none";
+                botonEditar.style.display = "inline-block";
+                botonGuardar.style.display = "none";
+                botonCancelar.style.display = "none";
+            });
         });
-
-        inputTarea.value = ""; // Limpia el input después de enviar la tarea
     });
-});
 
+});

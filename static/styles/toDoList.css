@@ -29,11 +29,6 @@ body {
     padding-bottom: 15px;
 }
 
-.task-list input, .task-list textarea{
-    width: 240px;
-    margin: 1px 5px;
-}
-
 .task-list input{
     height: 30px;
 }
@@ -59,4 +54,25 @@ h3{
     height: 75px;
     line-height: 75px;
     text-align: center;
+}
+/* Estilo para la lista sin puntos de lista */
+ul {
+    list-style: none;
+    padding: 0; /* Elimina el espacio de relleno por defecto */
+}
+
+/* Estilo para los elementos de la lista */
+li {
+    margin-bottom: 10px; /* Espacio entre elementos de la lista */
+    display: flex; /* Utiliza un diseño flexible para alinear elementos */
+    align-items: left; /* Centra verticalmente los elementos */
+}
+
+/* Estilo para los elementos de la lista con casillas de verificación */
+li input[type="checkbox"] {
+    margin-right: 10px; /* Espacio entre la casilla de verificación y el texto */
+}
+
+.seccionEditar {
+    display: "none";
 }
