@@ -32,7 +32,8 @@ def editarTarea():
     tarea = request.form['tareaEditar']
     nuevoNombre = request.form['nuevoNombre']
     listaActividades.modificarActividad(tarea, nuevoNombre)
-    print([actividad.getNombre() for actividad in listaActividades.actividades])
+    actividades = listaActividades.getActividades()
+    print([actividad.getNombre() for actividad in actividades])
     # Agrega aquí la lógica para editar la tarea con el ID proporcionado.
     return redirect(url_for("toDoList"))
 

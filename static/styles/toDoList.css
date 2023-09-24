@@ -1,5 +1,3 @@
-
-
 * {
     margin: 0;
     box-sizing: border-box;
@@ -52,6 +50,17 @@ form#todo-form button.boton-personalizado {
     margin-left: 10px;
     cursor: pointer; /* hace al curso una manito*/
     font-size: 16px;
+}
+
+/* Estilo para los enlaces de navegación cuando se hace clic (pseudoclase :active) */
+.nav a.active {
+    background-color: #2980b9; /* Cambia el color de fondo a azul cuando se hace clic */
+    color: white; /* Cambia el color del texto a blanco cuando se hace clic */
+    padding: 10px 30px;
+    border-radius: 15px;
+    text-decoration: none;
+    display: inline-block;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Navegación */
@@ -108,11 +117,62 @@ button:hover {
     background-color: #2980b9; /* Color de fondo al pasar el mouse */
     color: #ffffff; /* Color de texto al pasar el mouse */
 }
+
 li {
     display: flex;
-    flex-wrap: wrap; /* Para que los elementos pasen a la siguiente fila si no caben en una sola línea */
-    gap: 5px;
-    align-items: center;
+    align-items: center; /* Centra verticalmente los elementos en el li */
+    justify-content: space-between; /* Alinea los elementos a lo largo del eje principal (horizontal) */
+    padding: 10px; /* Espaciado interior para un aspecto más limpio */
+}
+
+/* Estilo para el contenedor de detalles de la tarea */
+.taskDetalles{
+display: flex;
+align-items: center; /* Centra verticalmente los elementos en el contenedor */
+}
+
+/* Estilo para el checkbox */
+.checkbox-tarea {
+margin-right: 10px; /* Espacio entre la casilla de verificación y el nombre de la tarea */
+}
+
+/* Estilo para el nombre de la tarea */
+.task-name {
+flex: 1; /* Hace que el nombre de la tarea ocupe el espacio restante disponible */
+}
+
+/* Estilo para el contenedor de acciones de la tarea */
+.taskAcciones {
+display: flex;
+align-items: center; /* Centra verticalmente los elementos en el contenedor */
+}
+
+/* Estilo para el cuadro de texto de edición */
+.formEditar {
+flex: 1; /* Hace que el cuadro de texto ocupe el espacio restante disponible */
+margin-right: 1100px; /* Espaciado a la izquierda para separar el cuadro de texto del botón de guardar */
+margin-top: 30px;
+width: 100%;
+max-width: 700px;
+box-sizing: border-box;
+}
+
+/* Estilo para el botón de editar */
+.boton-editar {
+margin-right: 10px; /* Espacio entre el botón de editar y el botón de eliminar */
+}
+
+/* Estilo para el botón de eliminar */
+.boton-eliminar {
+margin-left: 10px; /* Espacio entre el botón de eliminar y el botón de editar */
+}
+
+.Guardar {
+margin-top: 10px;
+}
+
+.Cancelar {
+margin-top: 10px;
 }
 
 /* Contenedor para alinear elementos */
@@ -129,10 +189,19 @@ li {
 
 /* Estilos para el botón "Clear completed" */
 #actividades-completadas {
+    margin-top: 10px;
+    background-color: #2980b9; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
     font-size: 16px;
     transition: background-color 0.3s, color 0.3s;
+    cursor: pointer; /* Cambia el cursor al estilo de un botón */
+}
+
+/* Estilo hover para el botón */
+#actividades-completadas:hover {
+    background-color: #0056b3; /* Cambia el color de fondo al pasar el cursor sobre el botón */
 }
 
