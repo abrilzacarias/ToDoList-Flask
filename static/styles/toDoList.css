@@ -115,3 +115,24 @@ li {
     align-items: center;
 }
 
+/* Contenedor para alinear elementos */
+.footer {
+    display: flex;
+    justify-content: space-between; /* Coloca los elementos al inicio y al final del contenedor */
+    align-items: center; /* Centra verticalmente los elementos */
+}
+
+/* Estilos para el párrafo de actividades pendientes */
+#actividades-pendientes {
+    margin: 0; /* Elimina el margen para ajustar el párrafo a la izquierda */
+}
+
+/* Estilos para el botón "Clear completed" */
+#actividades-completadas {
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s;
+}
+

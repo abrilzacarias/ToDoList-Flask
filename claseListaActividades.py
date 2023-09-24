@@ -2,14 +2,18 @@ from claseActividad import Actividad
 
 class ListaActividades:
     def __init__(self):
-        self.actividades = []
+        self.__actividades = []
+
+    def setActividades(self, actividades):
+        self.__actividades = actividades
 
     def getActividades(self):
-        return self.actividades
+        return self.__actividades
     
     def crearActividad(self, nombreActividad, estado):
+        actividades = self.getActividades()
         actividad = Actividad(nombreActividad, estado)
-        self.actividades.append(actividad)
+        actividades.append(actividad)
         return actividad.getNombre(), actividad.getEstado()
 
     def modificarActividad(self, actividadActual, nuevaActividad):
@@ -23,7 +27,7 @@ class ListaActividades:
         actividades = self.getActividades()
         for actividad in actividades:
             if actividadEliminar == actividad.getNombre():
-                self.actividades.remove(actividad)
+                actividades.remove(actividad)
         return actividades  
 
     def chequearActividad(self, nombreTarea):
@@ -37,4 +41,13 @@ class ListaActividades:
         pass
 
     def limpiarActividadesCompletadas(self):
-        pass
+        actividades = self.getActividades()
+        actividadesPorEliminar = []
+
+        for actividad in actividades:
+            if actividad.getEstado() == 'Inactive':
+                actividadesPorEliminar.append(actividad)
+
+        for actividad in actividadesPorEliminar:
+            actividades.remove(actividad)
+

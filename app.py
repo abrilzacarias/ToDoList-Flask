@@ -8,15 +8,15 @@ listaActividades = ListaActividades()
 def toDoList():
     actividades = listaActividades.getActividades()
     # Inicializa listas vacías para actividades activas e inactivas
-    actividadesActivas = []
-    actividadesInactivas = []
+    actividadesActivas, actividadesInactivas, actividadesPendientes = [], [], 0
     # Itera sobre las actividades y clasifícalas en las listas correspondientes
     for actividad in actividades:
         if actividad.getEstado() == 'Active':
+            actividadesPendientes+=1
             actividadesActivas.append(actividad)
         elif actividad.getEstado() == 'Inactive':
             actividadesInactivas.append(actividad)
-    return render_template('index.html', actividades=actividades, actividadesActivas=actividadesActivas, actividadesInactivas=actividadesInactivas)
+    return render_template('index.html', actividades=actividades, actividadesActivas=actividadesActivas, actividadesInactivas=actividadesInactivas, actividadesPendientes=actividadesPendientes)
 
 @app.route('/agregar', methods=['POST'])
 def toDoListAgregar():
@@ -49,6 +49,12 @@ def marcarCompletada():
     listaActividades.chequearActividad(tarea)
     return redirect(url_for("toDoList"))
 
+
+@app.route('/limpiarActividadesCompletadas', methods=['POST'])
+def limpiarActividades():
+    # Encuentra la tarea por su nombre y cambia su estado a "Inactive"
+    listaActividades.limpiarActividadesCompletadas()
+    return redirect(url_for("toDoList"))
 
 if __name__ == '__main__':
     app.run(debug=True)

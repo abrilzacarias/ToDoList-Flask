@@ -88,9 +88,7 @@
                 {% for actividad in actividadesInactivas %}
                 <li>
                     <form action="/marcarCompletada" method="POST">
-                        <label>
-                            <input type="checkbox" name="tarea" value="{{ actividad.getNombre() }}" data-estado="{{ actividad.getEstado() }}" class="checkbox-tarea" checked>
-                        </label>
+                        <input type="checkbox" name="tarea" value="{{ actividad.getNombre() }}" data-estado="{{ actividad.getEstado() }}" class="checkbox-tarea" checked>
                     </form>
                     
                     <label name="tareaEditar" id="{{ actividad.getNombre() }}">{{ actividad.getNombre() }}</label>
@@ -111,7 +109,13 @@
                 {% endfor %}
             </ul>
         </section>
-     
+        
+        <div class="footer">
+            <p id="actividades-pendientes">{{ actividadesPendientes }} actividad(es) pendiente(s).</p>
+            <form action="/limpiarActividadesCompletadas" method="POST">
+                <button type="submit" id="actividades-completadas">Eliminar tareas completadas</button>
+            </form>
         </div>
+        
     </body>
 </html>
