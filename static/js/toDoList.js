@@ -1,32 +1,35 @@
 document.addEventListener("DOMContentLoaded", function () { //se utiliza cuando se cargo todo el html
     const enlaces = document.querySelectorAll(".nav a"); //selecciona todos los elementos <a> que estan dentro de un elemento nav
 
-  // Función para resaltar el enlace activo
+  // función para resaltar el enlace activo
   function resaltarEnlaceActivo() {
     enlaces.forEach(function (enlace) {
+      // elimina la clase active de todos los enlaces
       enlace.classList.remove("active");
     });
 
     const seccionActual = document.querySelector("section[style='display: block;']");
+    // se utiliza para encontrar la seccion actual que se esta mostrando (la que tiene "display: block;")
     const enlaceCorrespondiente = document.querySelector(`.nav a[href="#${seccionActual.id}"]`);
-    
+    // encuentra el enlace correspondiente al ID de la sección actual
     if (enlaceCorrespondiente) {
+      // agrega la clase active al enlace correspondiente
       enlaceCorrespondiente.classList.add("active");
     }
   }
 
-  // Agrega el evento "click" a los enlaces para cambiar el estilo
+  // agrega el evento "click" a los enlaces para cambiar el estilo
   enlaces.forEach(function (enlace) {
     enlace.addEventListener("click", function (event) {
+      // previene el comportamiento predeterminado de los enlaces (evita que se cargue una nueva página)
       event.preventDefault();
-      const seccionId = this.getAttribute("href").substring(1);
-      mostrarSeccion(seccionId);
-      resaltarEnlaceActivo();
+      const seccionId = this.getAttribute("href").substring(1); //obtiene el ID de la seccion a la que se le hace clic 
+      mostrarSeccion(seccionId); // llama a la funcion mostrarSeccion
+      resaltarEnlaceActivo(); //resalta el enlace activo
     });
   });
 
-  // Llama a la función para resaltar el enlace activo al cargar la página
-  resaltarEnlaceActivo();
+
 });
 
     function mostrarSeccion(seccionId) {
@@ -46,22 +49,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
     botonesEditar.forEach(function (botonEditar) {
         botonEditar.addEventListener("click", function () {
-            const listItem = botonEditar.closest("li");
-            const nombreActividad = listItem.querySelector("label[name='tareaEditar']");
-            const inputEditar = listItem.querySelector("input#inputEditar");
+          //cuando se hace clic en un botonEditar
+            const listItem = botonEditar.closest("li"); //encuentra el elemento li mas cercano al boton de editar
+            const nombreActividad = listItem.querySelector("label[name='tareaEditar']"); //se busca dentro de listItem un elemento label que tenga el atributo name
+            const inputEditar = listItem.querySelector("input#inputEditar"); //se busca un elemento input con un id igual a "inputEditar"
             const botonGuardar = listItem.querySelector(".boton.guardar");
             const botonCancelar = listItem.querySelector(".boton.cancelar");
             
-            nombreActividad.style.display = "none";
-            inputEditar.style.display = "block";
-            inputEditar.value = nombreActividad.textContent; // Establecer el valor del input como el nombre actual
+            nombreActividad.style.display = "none"; //invisible
+            inputEditar.style.display = "block"; //visible
+            inputEditar.value = nombreActividad.textContent; // establece el valor del input como el nombre actual
             botonEditar.style.display = "none";
             botonGuardar.style.display = "inline-block";
             botonCancelar.style.display = "inline-block";
 
-            // Agrega aquí el código para el botón "Cancelar"
+        
             botonCancelar.addEventListener("click", function () {
-                // Tu lógica para el botón "Cancelar" aquí
+                
                 nombreActividad.style.display = "block";
                 inputEditar.style.display = "none";
                 botonEditar.style.display = "inline-block";

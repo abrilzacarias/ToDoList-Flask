@@ -40,20 +40,21 @@ class ListaActividades:
     #Método para marcar una actividad como inactiva (completada)
     def chequearActividad(self, nombreTarea):
         actividades = self.getActividades()
-        for actividad in actividades:
+        for actividad in actividades: #se recorre la lista de actividades
             if actividad.getNombre() == nombreTarea:
                 actividad.setEstado("Inactive")
         return actividades 
 
     #Método para limpiar actividades completadas
     def limpiarActividadesCompletadas(self):
-        actividades = self.getActividades()
-        actividadesPorEliminar = []
+        actividades = self.getActividades() #obtenemos las actividades
+        actividadesPorEliminar = [] #lista de las acts por eliminar
 
         for actividad in actividades:
-            if actividad.getEstado() == 'Inactive':
+            if actividad.getEstado() == 'Inactive': #si el estado de la actividad se encuentra inactiva se la agrega a la lista
+                #de acts por eliminar 
                 actividadesPorEliminar.append(actividad)
 
         for actividad in actividadesPorEliminar:
-            actividades.remove(actividad)
+            actividades.remove(actividad) #se elimina la actividad
 
