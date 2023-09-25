@@ -10,7 +10,7 @@ La aplicación utiliza Flask para crear rutas y vistas web. Se definen rutas par
 
 PARA EJECUTAR LA APLICACIÓN EN FLASK
 
-Paso 1: Instalar Flask
+Paso 1: Instalar Flask.
 
 Se debe tener instalado Python.
 Luego, instalar Flask utilizando pip, el administrador de paquetes de Python. Abre una terminal o línea de comandos y ejecuta el siguiente comando:
