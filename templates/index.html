@@ -1,52 +1,75 @@
 <html>
     <head>
+        <!-- Título de la página -->
         <title>To-Do</title>
+        <!-- Enlace a archivo de estilos CSS -->
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/toDoList.css') }}" />
+        <!-- Script JavaScript -->
         <script src="{{ url_for('static', filename='js/toDoList.js') }}"></script>
+        <!-- Biblioteca de iconos -->
         <script src="https://kit.fontawesome.com/05c2be17c9.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <div id="container">
+            <!-- Encabezado principal -->
             <h3 id="header">To Do List</h3>
+            <!-- Formulario para agregar tarea -->
             <form action="/agregar" id="todo-form" method="POST">
+                <!-- Campo de entrada de texto para la nueva tarea -->
                 <input type="text" name="tarea" id="inputTarea" placeholder="Agregar actividad..." />
+                <!-- Botón para agregar la tarea -->
                 <button class="botonAnadir" type="submit">
+                    <!-- Icono xe un signo "+" para el botón de agregar -->
                     <i class="fa-solid fa-plus"></i>
                 </button>
             </form>
 
+        <!-- Navegación de pestañas -->
         <nav class="nav">
             <ul>
+                <!-- Enlace a la sección All (todas las actividades) -->
                 <li><a href="#seccionAll" class="enlace-all"> All</a></li>
+                <!-- Enlace a la sección Active (las actividades activas) -->
                 <li><a href="#seccionActive" class="enlace-active"> Active</a></li>
+                <!-- Enlace a la sección Completed (las actividades completadas) -->
                 <li><a href="#seccionCompleted" class="enlace-completed"> Completed</a></li>
             </ul>
         </nav>
     
+        <!-- Sección que muestra todas las tareas -->
         <section id="seccionAll" class="seccion">
             <ul id="actividadesTodas">
+                <!-- Bucle para mostrar las tareas -->
                 {% for actividad in actividades %}
                 <li>
                     <div class="taskDetalles">
+                        <!-- Formulario para marcar la tarea como completada -->
                         <form action="/marcarCompletada" method="POST">
                             <label>
+                                <!-- Casilla de verificación para la tarea -->
                                 <input type="checkbox" name="tarea" value="{{ actividad.getNombre() }}" data-estado="{{ actividad.getEstado() }}" onchange="this.form.submit()" class="checkbox-tarea" {% if actividad.getEstado() == 'Inactive' %}checked{% endif %}>
                             </label>
                         </form>
+                        <!-- Etiqueta para mostrar el nombre de la tarea -->
                         <label name="tareaEditar" id="{{ actividad.getNombre() }}">{{ actividad.getNombre() }}</label>
                     </div>
                     <div class="taskAcciones">
+                        <!-- Botón para editar una tarea -->
                         <button class="boton-editar" type="button" data-nombre="{{ actividad.getNombre() }}"><i class="fa-solid fa-pencil"></i></button>
-    
+                        <!--Formulario apra editar una tarea -->
                         <form action="/editar" method="POST"> 
                             <input type="hidden" name="tareaEditar" value="{{ actividad.getNombre() }}">
+                            <!-- Campo de entrada de texto para la edición de la tarea -->
                             <input class="formEditar" type="text" name="nuevoNombre" id="inputEditar" placeholder="editar Actividad" style="display: none;" />
+                            <!-- Botón para guardar los cambios -->
                             <button class="boton guardar" type="submit" style="display: none;">Guardar</button>
+                            <!-- Botón para cancelar la edición -->
                             <button class="boton cancelar" type="button" style="display: none;">Cancelar</button>
                         </form>
-    
+                        <!-- Formulario para eliminar una tarea -->
                         <form action="/eliminar" method="POST" class="eliminar-form">
                             <input type="hidden" name="tareaEliminar" value="{{ actividad.getNombre() }}">
+                            <!-- Botón para eliminar una tarea -->
                             <button class="boton eliminar" type="submit"><i class="fa-solid fa-trash"></i></button>
                         </form>
                     </div>  
@@ -55,6 +78,8 @@
             </ul>
         </section>
         
+        <!-- Secciones "Active" y "Completed" con estructura similar a la anterior -->
+
         <section id="seccionActive" class="seccion">
             <ul id="actividadesActivas">
                 {% for actividad in actividadesActivas %}
@@ -110,7 +135,6 @@
                         <button class="boton guardar" type="submit" style="display: none;">Guardar</button>
                         <button class="boton cancelar" type="button" style="display: none;">Cancelar</button>
                     </form>
-                    
     
                     <form action="/eliminar" method="POST" class="eliminar-form">
                         <input type="hidden" name="tareaEliminar" value="{{ actividad.getNombre() }}">
@@ -122,9 +146,13 @@
             </ul>
         </section>
         
+        <!-- Sección del pie de página -->
         <div class="footer">
+            <!-- Mostrar el número de actividades pendientes -->
             <p id="actividades-pendientes">{{ actividadesPendientes }} actividad(es) pendiente(s).</p>
+            <!-- Formulario para limpiar las actividades completadas -->
             <form action="/limpiarActividadesCompletadas" method="POST">
+                <!-- Botón para eliminar tareas completadas -->
                 <button type="submit" id="actividades-completadas">Eliminar tareas completadas</button>
             </form>
         </div>

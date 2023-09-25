@@ -1,10 +1,10 @@
+/* Establece los márgenes para todos los elementos */
 * {
     margin: 0;
     box-sizing: border-box;
 }
 
-
-/* Estilos generales */
+/* Estilos generales de la página*/
 body {
     font-family: Arial, sans-serif;
     background-color: #fff;
@@ -12,6 +12,7 @@ body {
     padding: 0;
 }
 
+/* Contenedor principal de la página */
 #container {
     margin: 0 auto;
     padding: 20px;
@@ -19,6 +20,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Encabezado principal */
 h3#header {
     font-size: 24px;
     text-align: center;
@@ -33,6 +35,7 @@ form#todo-form {
     margin-bottom: 20px;
 }
 
+/* Campo de entrada de texto en formulario */
 form#todo-form input[type="text"] {
     width: 80%;
     padding: 10px;
@@ -41,6 +44,7 @@ form#todo-form input[type="text"] {
     font-size: 16px;
 }
 
+/* Botón personalizado en el formulario */
 form#todo-form button.boton-personalizado {
     background-color: #007bff;
     color: #fff;
@@ -48,14 +52,14 @@ form#todo-form button.boton-personalizado {
     border-radius: 4px;
     padding: 10px 20px;
     margin-left: 10px;
-    cursor: pointer; /* hace al curso una manito*/
+    cursor: pointer; 
     font-size: 16px;
 }
 
-/* Estilo para los enlaces de navegación cuando se hace clic (pseudoclase :active) */
+/* Estilo para los enlaces de navegación cuando se hace clic (activos)*/
 .nav a.active {
-    background-color: #2980b9; /* Cambia el color de fondo a azul cuando se hace clic */
-    color: white; /* Cambia el color del texto a blanco cuando se hace clic */
+    background-color: #2980b9; 
+    color: white; 
     padding: 10px 30px;
     border-radius: 15px;
     text-decoration: none;
@@ -72,18 +76,18 @@ nav.nav ul {
 }
 
 nav.nav ul li {
-    margin-right: 50px; /* margen derecho de los elementos de la lista*/
+    margin-right: 50px; 
 }
 
 nav.nav ul li a {
-    text-decoration: none; /* elimina el subrayado*/
+    text-decoration: none; 
     color: #333;
     font-weight: bold;
 }
 
 /* Secciones */
 section {
-    display: none; /*oculta el contenido html de todas las secciones*/
+    display: none; 
     padding: 20px;
 }
 
@@ -93,19 +97,19 @@ section h1 {
     color: #333;
 }
 
+/* Listas sin viñetas */
 ul {
-    list-style: none; /*elimina las vinetas de la lista*/
+    list-style: none; 
     padding: 0;
 }
 
 /* Estilos específicos para las secciones */
 .seccion {
     background-color: #f2f2f2;
-
 }
 
+/* Estilos comunes para todos los botones */
 button {
-    /* Estilos comunes para todos los botones */
     background-color: #ffffff;
     color: #000000;
     border: none;
@@ -113,44 +117,47 @@ button {
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s
 }
+
+/* Estilos hover para botones */
 button:hover {
-    background-color: #2980b9; /* Color de fondo al pasar el mouse */
-    color: #ffffff; /* Color de texto al pasar el mouse */
+    background-color: #2980b9; 
+    color: #ffffff; 
 }
 
+/* Estilos para elementos de lista*/
 li {
     display: flex;
-    align-items: center; /* Centra verticalmente los elementos en el li */
-    justify-content: space-between; /* Alinea los elementos a lo largo del eje principal (horizontal) */
-    padding: 10px; /* Espaciado interior para un aspecto más limpio */
+    align-items: center;
+    justify-content: space-between; 
+    padding: 10px; 
 }
 
 /* Estilo para el contenedor de detalles de la tarea */
 .taskDetalles{
 display: flex;
-align-items: center; /* Centra verticalmente los elementos en el contenedor */
+align-items: center; 
 }
 
 /* Estilo para el checkbox */
 .checkbox-tarea {
-margin-right: 10px; /* Espacio entre la casilla de verificación y el nombre de la tarea */
+margin-right: 10px;
 }
 
 /* Estilo para el nombre de la tarea */
 .task-name {
-flex: 1; /* Hace que el nombre de la tarea ocupe el espacio restante disponible */
+flex: 1; 
 }
 
 /* Estilo para el contenedor de acciones de la tarea */
 .taskAcciones {
 display: flex;
-align-items: center; /* Centra verticalmente los elementos en el contenedor */
+align-items: center;
 }
 
 /* Estilo para el cuadro de texto de edición */
 .formEditar {
-flex: 1; /* Hace que el cuadro de texto ocupe el espacio restante disponible */
-margin-right: 1100px; /* Espaciado a la izquierda para separar el cuadro de texto del botón de guardar */
+flex: 1; 
+margin-right: 1100px; 
 margin-top: 30px;
 width: 100%;
 max-width: 700px;
@@ -159,49 +166,51 @@ box-sizing: border-box;
 
 /* Estilo para el botón de editar */
 .boton-editar {
-margin-right: 10px; /* Espacio entre el botón de editar y el botón de eliminar */
+margin-right: 10px; 
 }
 
 /* Estilo para el botón de eliminar */
 .boton-eliminar {
-margin-left: 10px; /* Espacio entre el botón de eliminar y el botón de editar */
+margin-left: 10px; 
 }
 
+/* Estilo para el botón de guardar */
 .Guardar {
 margin-top: 10px;
 }
 
+/* Estilo para el botón de cancelar */
 .Cancelar {
 margin-top: 10px;
 }
 
-/* Contenedor para alinear elementos */
+/* Contenedor del pie de página */
 .footer {
     display: flex;
-    justify-content: space-between; /* Coloca los elementos al inicio y al final del contenedor */
-    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: space-between; 
+    align-items: center; 
 }
 
-/* Estilos para el párrafo de actividades pendientes */
+/* Estilos para el actividades pendientes */
 #actividades-pendientes {
-    margin: 0; /* Elimina el margen para ajustar el párrafo a la izquierda */
+    margin: 0; 
 }
 
 /* Estilos para el botón "Clear completed" */
 #actividades-completadas {
     margin-top: 10px;
-    background-color: #2980b9; /* Color de fondo del botón */
-    color: white; /* Color del texto del botón */
+    background-color: #2980b9;
+    color: white; 
     border: none;
     border-radius: 4px;
     padding: 10px 20px;
     font-size: 16px;
     transition: background-color 0.3s, color 0.3s;
-    cursor: pointer; /* Cambia el cursor al estilo de un botón */
+    cursor: pointer; 
 }
 
 /* Estilo hover para el botón */
 #actividades-completadas:hover {
-    background-color: #0056b3; /* Cambia el color de fondo al pasar el cursor sobre el botón */
+    background-color: #0056b3;
 }
 
