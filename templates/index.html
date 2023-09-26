@@ -16,7 +16,7 @@
             <!-- Formulario para agregar tarea -->
             <form action="/agregar" id="todo-form" method="POST">
                 <!-- Campo de entrada de texto para la nueva tarea -->
-                <input type="text" name="tarea" id="inputTarea" placeholder="Agregar actividad..." />
+                <input type="text" name="tarea" id="inputTarea" placeholder="Whats needs to be done?" />
                 <!-- Botón para agregar la tarea -->
                 <button class="botonAnadir" type="submit">
                     <!-- Icono xe un signo "+" para el botón de agregar -->
@@ -148,11 +148,11 @@
         <!-- sección del pie de página -->
         <div class="footer">
             <!-- muestra el número de actividades pendientes -->
-            <p id="actividades-pendientes">{{ actividadesPendientes }} actividad(es) pendiente(s).</p>
+            <p id="actividades-pendientes">{{ actividadesPendientes }} active item(s) left.</p>
             <!-- formulario para limpiar las actividades completadas -->
             <form action="/limpiarActividadesCompletadas" method="POST">
                 <!-- botón para eliminar tareas completadas -->
-                <button type="submit" id="actividades-completadas">Eliminar tareas completadas</button>
+                <button type="submit" id="actividades-completadas">Clear Completed</button>
             </form>
         </div>
         
