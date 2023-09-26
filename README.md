@@ -21,7 +21,7 @@ Paso 2: Ejecutar la Aplicación
 Ejecutar el archivo app.py. 
 
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
- * 
+   
 Esto significa que tu aplicación Flask está escuchando en http://127.0.0.1:5000/ (también conocida como http://localhost:5000/).
 
 Paso 3: Acceder a la Aplicación
